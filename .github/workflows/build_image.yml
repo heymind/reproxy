@@ -1,0 +1,13 @@
+name: build-image
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t mini-docker-rust .
+      - run: docker push ghcr.io/heymind/reproxy:latest
